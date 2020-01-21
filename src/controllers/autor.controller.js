@@ -12,15 +12,32 @@ export async function getAutores(req, res) {
     }
 }
 
+// Seleccionar un autor
+export async function getAutor(req, res) {
+    try {
+        const { autorId } = req.params;
+        const autor = await Autor.findOne({
+            where: {
+                ID_autor: autorId
+            }
+        });
+        res.json(autor);
+    } catch (E) {
+        res.status(500).json('Error');
+    }
+}
+
 // Insertar nuevo autor
 export async function insertAutor(req, res) {
     try {
         const { nombre_autor, paterno_autor, materno_autor } = req.body;
 
-        let nuevoAutor = Autor.create({
+        let nuevoAutor = await Autor.create({
             nombre_autor, // Cómo tiene el mismo nombre que el modelo, es igual a hacer nombre_autor: nombre_autor
             paterno_autor,
             materno_autor
+        }, {
+            fields: ['nombre_autor', 'paterno_autor', 'materno_autor']
         });
 
         if (nuevoAutor) {

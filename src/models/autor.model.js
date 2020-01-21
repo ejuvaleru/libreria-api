@@ -2,10 +2,12 @@ import Sequelize from 'sequelize';
 import { sequelize } from '../database/database'; // Cadena de conexión
 
 const Autor = sequelize.define('autor', { // Definición de modelo, por eso en singular
+    ID_autor: {
+        type: Sequelize.INTEGER,
+        primaryKey: true
+    },
     nombre_autor: {
         type: Sequelize.TEXT,
-        allowNull: false,
-        primaryKey: true,
     },
     paterno_autor: {
         type: Sequelize.TEXT
