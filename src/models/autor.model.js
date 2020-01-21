@@ -17,7 +17,7 @@ const Autor = sequelize.define('autor', { // Definición de modelo, por eso en s
     }
 }, {
     timestamps: false, // Para cuestiones de fecha y evitar errorer, es configuración de Sequelize
-    tableName: 'autor', // Nombre de la tabla, muy importante
+    tableName: 'AUTOR', // Nombre de la tabla, muy importante
 }, 
 );
 
