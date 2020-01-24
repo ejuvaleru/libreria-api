@@ -30,14 +30,12 @@ export async function getAutor(req, res) {
 // Insertar nuevo autor
 export async function insertAutor(req, res) {
     try {
-        const { nombre_autor, paterno_autor, materno_autor } = req.body;
+        const { nombre_autor } = req.body;
 
         let nuevoAutor = await Autor.create({
             nombre_autor, // Cómo tiene el mismo nombre que el modelo, es igual a hacer nombre_autor: nombre_autor
-            paterno_autor,
-            materno_autor
         }, {
-            fields: ['nombre_autor', 'paterno_autor', 'materno_autor']
+            fields: ['nombre_autor']
         });
 
         if (nuevoAutor) {
@@ -48,6 +46,26 @@ export async function insertAutor(req, res) {
         }
 
     } catch (e) {
+        console.log(e);
+        res.status(500).json({
+            message: 'Something goes wrong!'
+        });
+    }
+}
+
+export async function eliminarAutor(req, res){
+    try{
+        const {autorId} = req.params;
+        const deletedCountRow = await Autor.destroy({
+            where: {
+                ID_autor: autorId
+            }
+        });
+        res.json({
+            data: 'Eliminado correctamente!',
+            count: deletedCountRow
+        });
+    } catch(e){
         console.log(e);
         res.status(500).json({
             message: 'Something goes wrong!'

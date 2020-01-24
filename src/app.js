@@ -12,6 +12,6 @@ app.use(morgan('dev'));
 app.use(json()); // Para entender los datos que vengan en formato JSON
 
 app.use('/api/autores', autorRoutes);
-app.use('/api/libro', libroRoutes);
+app.use('/api/libros', libroRoutes);
 
 export default app;
