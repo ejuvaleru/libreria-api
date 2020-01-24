@@ -1,9 +1,9 @@
 import Sequelize from 'sequelize';
 
 export const sequelize = new Sequelize(
-    'libreria',
+    'mydb',
     'root',
-    '3006',
+    '',
     {
         host: 'localhost',
         dialect: 'mysql',
