@@ -1,4 +1,6 @@
 import Libro from '../models/libro.model';
+// import Autor from '../models/autor.model';
+// import AutorLibro from '../models/autor.libro.model';
 import { sequelize } from '../database/database'; // Cadena de conexión
 
 export async function getLibros(req, res) {
@@ -12,19 +14,18 @@ export async function getLibros(req, res) {
     }
 }
 
-// export async function getLibroPorIdAutor(req, res) {
-//     try {
-//         const { idAutor } = req.params;
-//         const libro = await Libro.findOne({
-//             where: {
-//                 ID_autor: idAutor
-//             }
-//         });
-//         console.log(nombre);
-//         res.json({
-//             data: libro,
-//         });
-//     } catch (e) {
-//         console.log(e);
-//     }
-// }
+export async function getLibroPorIsbn(req, res) {
+    try {
+        let { isbn } = req.params;
+        const libros = await Libro.findOne({
+            where: {
+                isbn
+            }
+        });
+        res.json({
+            data: libros,
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}

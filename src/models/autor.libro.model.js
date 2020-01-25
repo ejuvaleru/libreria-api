@@ -16,6 +16,10 @@ const AutorLibro = sequelize.define('autor_has_libro', {
             key: 'ID_autor'
         }
     }
-});
+},
+    {
+        timestamps: false, // Para cuestiones de fecha y evitar errorer, es configuración de Sequelize
+        tableName: 'libro_autor', // Nombre de la tabla, muy importante
+    });
 
 export default AutorLibro;

@@ -1,4 +1,6 @@
 import Autor from '../models/autor.model';
+import Libro from '../models/libro.model';
+import AutorLibro from '../models/autor.libro.model';
 
 // Seleccionar todos los autores
 export async function getAutores(req, res) {
@@ -37,7 +39,7 @@ export async function insertAutor(req, res) {
         }, {
             fields: ['nombre_autor']
         });
-
+        console.log(nuevoAutor.null);
         if (nuevoAutor) {
             res.json({
                 message: 'Creado exitosamente!',
@@ -53,9 +55,9 @@ export async function insertAutor(req, res) {
     }
 }
 
-export async function eliminarAutor(req, res){
-    try{
-        const {autorId} = req.params;
+export async function eliminarAutor(req, res) {
+    try {
+        const { autorId } = req.params;
         const deletedCountRow = await Autor.destroy({
             where: {
                 ID_autor: autorId
@@ -65,10 +67,56 @@ export async function eliminarAutor(req, res){
             data: 'Eliminado correctamente!',
             count: deletedCountRow
         });
-    } catch(e){
+    } catch (e) {
         console.log(e);
         res.status(500).json({
             message: 'Something goes wrong!'
         });
+    }
+}
+
+export async function getLibroYSuAutorPorIdAutor(req, res) {
+    try {
+        console.log(req);
+        let { autorId } = req.params;
+        // console.log('ID AUTOR ', idAutor);
+        const libro = await Autor.findAll({
+            include: [{
+                model: Libro,
+                required: true,
+                attributes: ['titulo'],
+                through: {
+                    where: { AUTOR_ID_autor: autorId },
+                }
+            }]
+        });
+        res.json({
+            data: libro,
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export async function getLibroYSuAutorPorNombreAutor(req, res) {
+    try {
+        console.log(req);
+        let { autorId } = req.params;
+        // console.log('ID AUTOR ', idAutor);
+        const libro = await Autor.findAll({
+            include: [{
+                model: Libro,
+                required: true,
+                attributes: ['titulo'],
+                through: {
+                    where: { AUTOR_ID_autor: autorId },
+                }
+            }]
+        });
+        res.json({
+            data: libro,
+        });
+    } catch (e) {
+        console.log(e);
     }
 }

@@ -1,8 +1,8 @@
 import { Router } from 'express';
 const router = Router();
-import { getLibros, getLibroPorIdAutor } from '../controllers/libro.controller';
+import { getLibros, getLibroPorIsbn } from '../controllers/libro.controller';
 
 router.get('/', getLibros);
-// router.get('/:idAutor', getLibroPorIdAutor);
+router.get('/:isbn', getLibroPorIsbn);
 
 export default router;

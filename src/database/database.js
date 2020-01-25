@@ -1,9 +1,10 @@
-import Sequelize from 'sequelize';
+const Sequelize = require('sequelize').Sequelize;
 
 export const sequelize = new Sequelize(
-    'mydb',
+    'libreria',
     'root',
-    '',
+    '3006', // Guevara
+    // '', // Rodrigo
     {
         host: 'localhost',
         dialect: 'mysql',
