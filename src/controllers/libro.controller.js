@@ -1,7 +1,6 @@
 import Libro from '../models/libro.model';
 // import Autor from '../models/autor.model';
 // import AutorLibro from '../models/autor.libro.model';
-import { sequelize } from '../database/database'; // Cadena de conexión
 
 export async function getLibros(req, res) {
     try {
