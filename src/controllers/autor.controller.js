@@ -1,6 +1,7 @@
 import Autor from '../models/autor.model';
 import Libro from '../models/libro.model';
 import AutorLibro from '../models/autor.libro.model';
+const Sequelize = require('sequelize').Sequelize; //para poder utilizar funcion MAX de sequelize
 
 // Seleccionar todos los autores
 export async function getAutores(req, res) {
@@ -115,6 +116,20 @@ export async function getLibroYSuAutorPorNombreAutor(req, res) {
         });
         res.json({
             data: libro,
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+// Seleccionar el autor con ID mayor
+export async function getMaxAutores(req, res) {
+    try {
+        const autores = await Autor.findAll({
+            attributes: [[Sequelize.fn('max', Sequelize.col('ID_autor')), 'maxIDautor']],
+          });
+        res.json({
+            data: autores,
         });
     } catch (e) {
         console.log(e);

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import { getLibros, getLibroPorIsbn, insertLibro, getLibroPorId, updateLibroPorId, deleteLibroPorId } from '../controllers/libro.controller';
+import { getLibros, getLibroPorIsbn, insertLibro, getLibroPorId, updateLibroPorId, deleteLibroPorId, getMaxLibro } from '../controllers/libro.controller';
 
 // Create Read Update Delete
 router.post('/', insertLibro);
@@ -11,6 +11,6 @@ router.delete('/:idLibro', deleteLibroPorId);
 // 
 router.get('/', getLibros);
 // router.get('/porisbn/:isbn', getLibroPorIsbn);
-
+router.get('/:chale/max', getMaxLibro); //CORREGIR
 
 export default router;

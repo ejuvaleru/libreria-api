@@ -1,4 +1,5 @@
 import Libro from '../models/libro.model';
+const Sequelize = require('sequelize').Sequelize; //para poder utilizar funcion MAX de sequelize
 // import Autor from '../models/autor.model';
 // import AutorLibro from '../models/autor.libro.model';
 
@@ -135,6 +136,19 @@ export async function getLibros(req, res) {
     }
 }
 
+
+export async function getMaxLibro(req, res) {
+    try {
+        const libros = await Libro.findAll({
+            attributes: [[Sequelize.fn('max', Sequelize.col('ID_libro')), 'maxIDlibro']],
+          });
+        res.json({
+            data: libros,
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
 // export async function getLibroPorIsbn(req, res) {
 //     try {
 //         let { isbn } = req.params;
