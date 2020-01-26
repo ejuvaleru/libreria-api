@@ -10,6 +10,6 @@ router.delete('/:idEjemplar', deleteEjemplarPorId);
 
 // Obtener todos los ejemplares
 router.get('/', getEjemplares);
-// router.get('/:idLibro', getEjemplaresPorLibroId);
+router.get('/:idLibro/libro', getEjemplaresPorLibroId);
 
 export default router;
