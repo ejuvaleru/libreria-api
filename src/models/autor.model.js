@@ -13,7 +13,7 @@ const Autor = sequelize.define('autores', { // Definición de modelo, por eso en
     }
 }, {
     timestamps: false, // Para cuestiones de fecha y evitar errorer, es configuración de Sequelize
-    tableName: 'autor', // Nombre de la tabla, muy importante
+    tableName: 'AUTOR', // Nombre de la tabla, muy importante
 });
 
 Autor.belongsToMany(Libro, {through: AutorLibro, foreignKey: 'AUTOR_ID_autor', otherKey: 'LIBRO_ID_libro'});
