@@ -34,12 +34,12 @@ export async function insertAutor(req, res) {
     try {
         const { nombre_autor } = req.body;
 
-        let nuevoAutor = await Autor.create({
+        const nuevoAutor = await Autor.create({
             nombre_autor, // Cómo tiene el mismo nombre que el modelo, es igual a hacer nombre_autor: nombre_autor
         }, {
             fields: ['nombre_autor']
         });
-        console.log(nuevoAutor.null);
+        // console.log(nuevoAutor.null);
         if (nuevoAutor) {
             res.json({
                 message: 'Creado exitosamente!',

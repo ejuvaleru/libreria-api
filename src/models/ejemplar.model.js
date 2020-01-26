@@ -6,6 +6,7 @@ const Ejemplar = sequelize.define('ejemplar', {
     ID_ejemplares: {
         type: Sequelize.INTEGER,
         primaryKey: true,
+        autoIncrement: true
     },
     estado: Sequelize.TEXT,
     descripcion: Sequelize.TEXT,
