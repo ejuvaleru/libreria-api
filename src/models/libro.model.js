@@ -28,7 +28,7 @@ const Libro = sequelize.define('libros', {
     NOMENCLATURA_ID_NOMENCLATURA: { type: Sequelize.INTEGER }
 }, {
     timestamps: false, // Para cuestiones de fecha y evitar errorer, es configuración de Sequelize
-    tableName: 'libro'
+    tableName: 'LIBRO'
 }
 );
 

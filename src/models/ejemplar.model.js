@@ -20,7 +20,7 @@ const Ejemplar = sequelize.define('ejemplar', {
     }
 }, {
     timestamps: false,
-    tableName: 'Ejemplar'
+    tableName: 'EJEMPLAR'
 });
 
 Ejemplar.belongsTo(Libro, {foreignKey: 'LIBRO_ID_libro', as: 'ejemplar'});
