@@ -19,7 +19,7 @@ export async function getEditoriales(req, res) {
                 },
             });
             return res.json({
-                data: libros,
+                data: editoriales,
             });
         }
     } catch (e) {
