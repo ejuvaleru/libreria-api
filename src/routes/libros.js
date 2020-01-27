@@ -11,6 +11,6 @@ router.delete('/:idLibro', deleteLibroPorId);
 // 
 router.get('/', getLibros);
 // router.get('/porisbn/:isbn', getLibroPorIsbn);
-router.get('/:chale/max', getMaxLibro); //CORREGIR
+router.get('/max/max', getMaxLibro); //CORREGIR
 
 export default router;

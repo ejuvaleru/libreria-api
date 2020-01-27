@@ -5,6 +5,6 @@ const router = Router();
 
 router.get('/', getEditoriales);
 router.post('/', insertEditorial);
-router.get('/max/', getMaxEditoriales); //CORREGIR
+router.get('/max/max', getMaxEditoriales); //CORREGIR
 
 export default router;

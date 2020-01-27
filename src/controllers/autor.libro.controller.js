@@ -10,7 +10,7 @@ export async function insertarAutorLibro(req, res) {
         console.log(nuevoAutorLibro);
         if (nuevoAutorLibro) {
             return res.json({
-                message: "Ejemplar creado exitosamente!",
+                message: "autorLibro creado exitosamente!",
                 data: nuevoAutorLibro
             });
         }

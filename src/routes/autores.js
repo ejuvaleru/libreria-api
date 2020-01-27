@@ -8,6 +8,6 @@ router.post('/', insertAutor);
 router.get('/:autorId', getAutor);
 router.delete('/:autorId', eliminarAutor);
 router.get('/:autorId/libros', getLibroYSuAutorPorIdAutor);
-router.get('/:chale/max/', getMaxAutores); //CORREGIR
+router.get('/max/max', getMaxAutores); //CORREGIR
 
 export default router;
