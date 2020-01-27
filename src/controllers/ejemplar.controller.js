@@ -15,6 +15,8 @@ export async function insertarEjemplar(req, res) {
             url_fotografia,
             fecha_adquisicion,
             LIBRO_ID_libro
+        }, {
+            fields: ['estado', 'descripcion', 'costo_venta', 'costo_compra', 'costo_descuento', 'url_fotografia', 'fecha_adquisicion', 'LIBRO_ID_libro']
         });
         console.log(nuevoEjemplar);
         if (nuevoEjemplar) {
