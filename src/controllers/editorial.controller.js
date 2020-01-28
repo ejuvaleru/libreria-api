@@ -38,7 +38,7 @@ export async function insertEditorial(req, res) {
         });
         // console.log(nuevoAutor.null);
         if (nuevoEditorial) {
-            res.json({
+            return res.json({
                 message: 'Creado exitosamente!',
                 data: nuevoEditorial
             })
