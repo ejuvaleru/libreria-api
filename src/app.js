@@ -8,6 +8,13 @@ import editorialRoutes from './routes/editoriales'
 import libroRoutes from './routes/libros';
 import ejemplarRoutes from './routes/ejemplares';
 import autorLibroRoutes from './routes/autoresLibros';
+import areaRoutes from './routes/areas';
+import nomenclaturaRoutes from './routes/nomenclaturas';
+import subareaRoutes from './routes/subareas';
+import subsubtemaRoutes from './routes/subsubtemas';
+import subtemaRoutes from './routes/subtemas';
+import temaRoutes from './routes/temas';
+
 
 
 const app = express();
@@ -22,5 +29,12 @@ app.use('/api/libros', libroRoutes);
 app.use('/api/editoriales', editorialRoutes);
 app.use('/api/ejemplares', ejemplarRoutes);
 app.use('/api/autoresLibros', autorLibroRoutes);
+app.use('/api/areas', areaRoutes);
+app.use('/api/nomenclaturas', nomenclaturaRoutes);
+app.use('/api/subareas', subareaRoutes);
+app.use('/api/subsubtemas', subsubtemaRoutes);
+app.use('/api/subtemas', subtemaRoutes);
+app.use('/api/temas', temaRoutes);
+
 
 export default app;
