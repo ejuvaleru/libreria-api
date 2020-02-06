@@ -26,3 +26,21 @@ export async function getTemas(req, res) {
         console.log(e);
     }
 }
+
+export async function getTemasPorIdSubarea(req, res) {
+    try {
+        const query = req.query;
+        const temas = await Tema.findAll({
+            where: {
+                SUBAREA_ID_subarea: query.SUBAREA_ID_subarea,
+            },
+        });
+        return res.json({
+            data: temas,
+        });
+
+    } catch (e) { // En caso de error mandamos un mensaje y para ENV.DEV dejamos los mensajes por consola
+        console.log(e);
+        res.status(500).send('Error en el servidor');
+    }
+}

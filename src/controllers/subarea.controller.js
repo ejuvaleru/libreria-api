@@ -26,3 +26,21 @@ export async function getSubareas(req, res) {
         console.log(e);
     }
 }
+
+export async function getSubareasPorIdArea(req, res) {
+    try {
+        const query = req.query;
+        const subareas = await Subarea.findAll({
+            where: {
+                AREA_ID_area: query.AREA_ID_area,
+            },
+        });
+        return res.json({
+            data: subareas,
+        });
+
+    } catch (e) { // En caso de error mandamos un mensaje y para ENV.DEV dejamos los mensajes por consola
+        console.log(e);
+        res.status(500).send('Error en el servidor');
+    }
+}
