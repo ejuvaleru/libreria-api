@@ -1,10 +1,10 @@
-                                                                                                                                                                                                                                                                                import Libro from '../models/libro.model';
+import Libro from '../models/libro.model';
 const Sequelize = require('sequelize').Sequelize; //para poder utilizar funcion MAX de sequelize
 // import Autor from '../models/autor.model';
 // import AutorLibro from '../models/autor.libro.model';
 
 // Create Read Update Delete
-export async function insertLibro(req, res) {                                                                                                                       
+export async function insertLibro(req, res) {
     try {
 
         const { num_pagina, num_edicion, isbn, codigo_identificador, titulo, EDITORIAL_ID_editorial, NOMENCLATURA_ID_NOMENCLATURA } = req.body;
@@ -14,7 +14,7 @@ export async function insertLibro(req, res) {
             num_edicion,
             isbn,
             codigo_identificador,
-            titulo,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+            titulo,
             EDITORIAL_ID_editorial,
             NOMENCLATURA_ID_NOMENCLATURA
         });
@@ -107,7 +107,11 @@ export async function getLibros(req, res) {
         const query = req.query;
         console.log(query);
         if (Object.keys(query).length === 0) { // Si no lleva una query entra y devuelve todos los libros
-            const libros = await Libro.findAll();
+            const libros = await Libro.findAll({
+                order: [
+                    ['ID_libro', 'DESC'],
+                ],
+            });
             return res.json({
                 data: libros,
             });
@@ -141,7 +145,7 @@ export async function getMaxLibro(req, res) {
     try {
         const libros = await Libro.findAll({
             attributes: [[Sequelize.fn('max', Sequelize.col('ID_libro')), 'maxIDlibro']],
-          });
+        });
         res.json({
             data: libros,
         });

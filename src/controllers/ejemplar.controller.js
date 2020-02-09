@@ -87,7 +87,7 @@ export async function updateEjemplarPorId(req, res) {
     }
 }
 
-export async function deleteEjemplarPorId(req, res){
+export async function deleteEjemplarPorId(req, res) {
     try {
         const { idEjemplar } = req.params;
         let ejemplarCount = await Ejemplar.destroy({
@@ -133,9 +133,23 @@ export async function getEjemplaresPorLibroId(req, res) {
                 required: true,
             }]
         });
-        res.json({
-            data: ejemplares,
-        });
+        console.log(ejemplares);
+        if (await ejemplares.length !== 0) {
+            console.log('ENTRÓ AL IG A BUSCAR EJEMPLARES');
+            res.json({
+                data: ejemplares,
+            });
+        } else {
+            let libro = await Libro.findOne({ // Creamos el objeto ejemplar a partir de lo que encuentre
+                where: {
+                    ID_libro: idLibro // Buscamos por ID del ejemplar
+                },
+            });
+            res.json({
+                data: libro
+            });
+        }
+
     } catch (e) {
         console.log(e);
     }
