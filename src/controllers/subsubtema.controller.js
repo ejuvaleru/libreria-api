@@ -26,3 +26,22 @@ export async function getSubsubtemas(req, res) {
         console.log(e);
     }
 }
+
+//ejemplo http://localhost:4000/api/subsubtemas/byID_subtema?SUBTEMA_ID_subtema=1
+export async function getSubsubtemasPorIdSubtema(req, res) {
+    try {
+        const query = req.query;
+        const subsubtemas = await Subsubtema.findAll({
+            where: {
+                SUBTEMA_ID_subtema: query.SUBTEMA_ID_subtema,
+            },
+        });
+        return res.json({
+            data: subsubtemas,
+        });
+
+    } catch (e) { // En caso de error mandamos un mensaje y para ENV.DEV dejamos los mensajes por consola
+        console.log(e);
+        res.status(500).send('Error en el servidor');
+    }
+}

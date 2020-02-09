@@ -26,3 +26,21 @@ export async function getSubtemas(req, res) {
         console.log(e);
     }
 }
+
+export async function getSubtemasPorIdTema(req, res) {
+    try {
+        const query = req.query;
+        const subtemas = await Subtema.findAll({
+            where: {
+                TEMA_ID_tema: query.TEMA_ID_tema,
+            },
+        });
+        return res.json({
+            data: subtemas,
+        });
+
+    } catch (e) { // En caso de error mandamos un mensaje y para ENV.DEV dejamos los mensajes por consola
+        console.log(e);
+        res.status(500).send('Error en el servidor');
+    }
+}
