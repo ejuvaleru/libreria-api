@@ -1,4 +1,4 @@
-import express, {json} from 'express';
+import express, { json } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
@@ -14,8 +14,8 @@ import subareaRoutes from './routes/subareas';
 import subsubtemaRoutes from './routes/subsubtemas';
 import subtemaRoutes from './routes/subtemas';
 import temaRoutes from './routes/temas';
-
-
+import rolRoutes from './routes/rol';
+import usuarioRoutes from './routes/usuario';
 
 const app = express();
 
@@ -35,6 +35,7 @@ app.use('/api/subareas', subareaRoutes);
 app.use('/api/subsubtemas', subsubtemaRoutes);
 app.use('/api/subtemas', subtemaRoutes);
 app.use('/api/temas', temaRoutes);
-
+app.use('/api/roles', rolRoutes);
+app.use('/api/usuarios', usuarioRoutes);
 
 export default app;

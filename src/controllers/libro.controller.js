@@ -1,7 +1,5 @@
 import Libro from '../models/libro.model';
 const Sequelize = require('sequelize').Sequelize; //para poder utilizar funcion MAX de sequelize
-// import Autor from '../models/autor.model';
-// import AutorLibro from '../models/autor.libro.model';
 
 // Create Read Update Delete
 export async function insertLibro(req, res) {
