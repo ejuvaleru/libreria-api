@@ -1,6 +1,7 @@
 import express, { json } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import session from 'express-session';
 
 // Importando rutas
 import autorRoutes from './routes/autores';
@@ -22,6 +23,11 @@ const app = express();
 // Middlewares
 app.use(morgan('dev'));
 app.use(cors());
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(json()); // Para entender los datos que vengan en formato JSON
 
 app.use('/api/autores', autorRoutes);
