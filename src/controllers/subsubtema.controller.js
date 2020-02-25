@@ -2,7 +2,58 @@ import Subsubtema from '../models/subsubtema.model';
 
 const Sequelize = require('sequelize').Sequelize; //para poder utilizar funcion MAX de sequelize
 
-// Seleccionar todos las editoriales
+// Create Read Update
+export async function insertSubsubtema(req, res) {
+    try {
+        const { nombre_subsubtema, SUBTEMA_ID_subtema } = req.body;
+
+        let nuevoSubsubtema = await Subsubtema.create({
+            nombre_subsubtema,
+            SUBTEMA_ID_subtema
+        });
+
+        if (nuevoSubsubtema) {
+            return res.json({
+                code: 201,
+                message: 'Subsubtema creado correctamente.',
+                data: nuevoSubsubtema
+            });
+        } else {
+            return res.json({
+                code: 500,
+                message: 'Error interno en el servidor.'
+            })
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export async function updateSubsubtema(req, res) {
+    const { idSubsubtema } = req.params;
+    const { nombre_subsubtema, SUBTEMA_ID_subtema } = req.body;
+
+    let subsubTemas = await Subsubtema.findAll({
+        attributes: ['ID_subsubtema', 'nombre_subsubtema', 'SUBTEMA_ID_subtema'],
+        where: { ID_subsubtema: idSubsubtema }
+    });
+
+    if (subsubTemas.length > 0) {
+        subsubTemas.forEach(a => {
+            a.update({
+                nombre_subsubtema,
+                SUBTEMA_ID_subtema
+            });
+        });
+        return res.json({
+            code: 200,
+            message: 'Subsubtema actualizado correctamente.',
+            data: subsubTemas
+        });
+    }
+}
+
+// Seleccionar todos los sub sub temas
 export async function getSubsubtemas(req, res) {
     try {
         const query = req.query;

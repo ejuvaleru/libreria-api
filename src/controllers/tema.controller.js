@@ -2,7 +2,58 @@ import Tema from '../models/tema.model';
 
 const Sequelize = require('sequelize').Sequelize; //para poder utilizar funcion MAX de sequelize
 
-// Seleccionar todos las editoriales
+// Create Read Update 
+export async function insertTema(req, res) {
+    try {
+        const { nombre_tema, SUBAREA_ID_subarea } = req.body;
+
+        let nuevoTema = await Tema.create({
+            nombre_tema,
+            SUBAREA_ID_subarea
+        });
+
+        if (nuevoTema) {
+            return res.json({
+                code: 201,
+                data: nuevoTema,
+                message: 'Tema agregado exitosamente.'
+            });
+        } else {
+            return res.json({
+                code: 500,
+                message: 'Error interno en el servidor.'
+            });
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export async function updateTema(req, res) {
+    const { idTema } = req.params;
+    const { nombre_tema, SUBAREA_ID_subarea } = req.body;
+
+    let temas = await Tema.findAll({
+        attributes: ['ID_tema', 'nombre_tema', 'SUBAREA_ID_subarea'],
+        where: { ID_tema: idTema }
+    });
+
+    if (temas.length > 0) {
+        temas.forEach(a => {
+            a.update({
+                nombre_tema,
+                SUBAREA_ID_subarea
+            });
+        });
+        return res.json({
+            code: 200,
+            message: 'Tema actualizado correctamente.',
+            data: temas
+        });
+    }
+}
+
+// Seleccionar todos los temas
 export async function getTemas(req, res) {
     try {
         const query = req.query;

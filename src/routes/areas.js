@@ -1,9 +1,10 @@
-import {Router} from 'express';
+import { Router } from 'express';
 
-import {getAreas} from '../controllers/area.controller'
+import { getAreas, insertArea, updateArea } from '../controllers/area.controller'
 const router = Router();
 
 router.get('/', getAreas);
-//router.post('/', insertEditorial);
+router.post('/', insertArea);
+router.put('/:idArea', updateArea);
 
 export default router;

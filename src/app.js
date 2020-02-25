@@ -35,12 +35,14 @@ app.use('/api/libros', libroRoutes);
 app.use('/api/editoriales', editorialRoutes);
 app.use('/api/ejemplares', ejemplarRoutes);
 app.use('/api/autoresLibros', autorLibroRoutes);
+
 app.use('/api/areas', areaRoutes);
-app.use('/api/nomenclaturas', nomenclaturaRoutes);
 app.use('/api/subareas', subareaRoutes);
-app.use('/api/subsubtemas', subsubtemaRoutes);
-app.use('/api/subtemas', subtemaRoutes);
 app.use('/api/temas', temaRoutes);
+app.use('/api/subtemas', subtemaRoutes);
+app.use('/api/subsubtemas', subsubtemaRoutes);
+app.use('/api/nomenclaturas', nomenclaturaRoutes);
+
 app.use('/api/roles', rolRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 

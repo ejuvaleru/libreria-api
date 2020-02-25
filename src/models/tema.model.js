@@ -6,7 +6,8 @@ import { sequelize } from '../database/database'; // Cadena de conexión
 const Tema = sequelize.define('temas', { // Definición de modelo, por eso en singular
     ID_tema: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true,
     },
     nombre_tema: {
         type: Sequelize.TEXT,

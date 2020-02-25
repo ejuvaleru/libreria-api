@@ -6,7 +6,8 @@ import { sequelize } from '../database/database'; // Cadena de conexión
 const Subarea = sequelize.define('subareas', { // Definición de modelo, por eso en singular
     ID_subarea: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     nombre_subarea: {
         type: Sequelize.TEXT,

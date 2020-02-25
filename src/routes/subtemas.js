@@ -1,10 +1,11 @@
-import {Router} from 'express';
+import { Router } from 'express';
 
-import {getSubtemas,getSubtemasPorIdTema} from '../controllers/subtema.controller'
+import { getSubtemas, getSubtemasPorIdTema, insertSubtema, updateSubtema } from '../controllers/subtema.controller'
 const router = Router();
 
-router.get('/', getSubtemas);
+router.post('/', insertSubtema);
 router.get('/byID_tema/', getSubtemasPorIdTema);
-//router.post('/', insertEditorial);
+router.put('/:idSubtema', updateSubtema);
+router.get('/', getSubtemas);
 
 export default router;

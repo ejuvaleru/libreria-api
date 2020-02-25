@@ -4,7 +4,8 @@ import { sequelize } from '../database/database'; // Cadena de conexión
 const Libro = sequelize.define('libros', {
     ID_libro: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     num_pagina: {
         type: Sequelize.INTEGER

@@ -5,7 +5,7 @@ import Libro from './libro.model';
 const Editorial = sequelize.define('editorial', {
     ID_editorial: {
         type: Sequelize.INTEGER,
-        primaryKey: true,
+        primaryKey: true
     },
     nombre_editorial:{
         type: Sequelize.TEXT,

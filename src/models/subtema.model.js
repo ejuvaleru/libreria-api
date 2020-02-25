@@ -6,7 +6,8 @@ import { sequelize } from '../database/database'; // Cadena de conexión
 const Subtema = sequelize.define('subtemas', { // Definición de modelo, por eso en singular
     ID_subtema: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     nombre_subtema: {
         type: Sequelize.TEXT,

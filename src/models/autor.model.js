@@ -6,7 +6,8 @@ import AutorLibro from './autor.libro.model';
 const Autor = sequelize.define('autores', { // Definición de modelo, por eso en singular
     ID_autor: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     nombre_autor: {
         type: Sequelize.TEXT,

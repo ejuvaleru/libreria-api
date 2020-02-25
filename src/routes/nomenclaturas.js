@@ -1,9 +1,11 @@
-import {Router} from 'express';
+import { Router } from 'express';
 
-import {getNomenclaturas, getNomenclaturasPorIDsDatos} from '../controllers/nomenclatura.controller'
+import { getNomenclaturas, getNomenclaturasPorIDsDatos, insertNomenclatura, updateNomenclatura } from '../controllers/nomenclatura.controller'
 const router = Router();
 
-router.get('/', getNomenclaturas);
+router.post('/', insertNomenclatura);
+router.put('/:idNomenclatura', updateNomenclatura);
 router.get('/datos/', getNomenclaturasPorIDsDatos);
+router.get('/', getNomenclaturas);
 
 export default router;

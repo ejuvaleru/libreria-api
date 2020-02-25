@@ -1,12 +1,11 @@
 const Sequelize = require('sequelize').Sequelize;
 import { sequelize } from '../database/database'; // Cadena de conexión
-//import Libro from './libro.model';
-//import AutorLibro from './autor.libro.model';
 
-const Area = sequelize.define('areas', { // Definición de modelo, por eso en singular
+const Area = sequelize.define('areas', { // Definición de modelo
     ID_area: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     nombre_area: {
         type: Sequelize.TEXT,

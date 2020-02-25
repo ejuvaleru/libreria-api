@@ -12,7 +12,8 @@ import Subsubtema from './subsubtema.model';
 const Nomenclatura = sequelize.define('nomenclaturas', { // Definición de modelo, por eso en singular
     ID_NOMENCLATURA: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     abreviacion: {
         type: Sequelize.TEXT,
