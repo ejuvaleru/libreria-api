@@ -52,6 +52,34 @@ export async function insertEditorial(req, res) {
     }
 }
 
+export async function getEditorialById(req, res) {
+    try {
+        const { idEditorial } = req.params; // Extraemos de los parametros la URL
+
+        let editorial = await Editorial.findOne({ // Creamos el objeto ejemplar a partir de lo que encuentre
+            where: {
+                ID_editorial: idEditorial // Buscamos por ID del ejemplar
+            },
+        });
+        if (!editorial) { // Si no encuentra nada regresa un mensaje de error
+            return res.json({
+                code: 404,
+                message: `Ninguna editorial encontrada con el ID ${idEditorial}`,
+                data: null
+            });
+        } else {
+            return res.json({
+                code: 200,
+                message: 'Editorial encontrada.',
+                data: editorial
+            }); // Si encuentra algo refresa el objeto
+        }
+
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 // Seleccionar el editorial con ID mayor
 export async function getMaxEditoriales(req, res) {
     try {

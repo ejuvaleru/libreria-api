@@ -59,7 +59,7 @@ export async function updateEjemplarPorId(req, res) {
         const { estado, descripcion, costo_venta, costo_compra, costo_descuento, url_fotografia, fecha_adquisicion, LIBRO_ID_libro } = req.body;
 
         let ejemplares = await Ejemplar.findAll({
-            attributes: ['estado', 'descripcion', 'costo_venta', 'costo_compra', 'costo_descuento', 'url_fotografia', 'fecha_adquisicion', 'LIBRO_ID_libro'],
+            attributes: ['ID_ejemplares','estado', 'descripcion', 'costo_venta', 'costo_compra', 'costo_descuento', 'url_fotografia', 'fecha_adquisicion', 'LIBRO_ID_libro'],
             where: { ID_ejemplares: idEjemplar }
         });
 
