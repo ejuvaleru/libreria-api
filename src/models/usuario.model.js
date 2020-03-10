@@ -9,7 +9,7 @@ const Usuario = sequelize.define('usuarios', {
     nombre: Sequelize.TEXT,
     nombre_usuario: Sequelize.TEXT,
     contraseña_claro: Sequelize.TEXT,
-    ROL_id: Sequelize.INTEGER
+    ROL_ID_rol: Sequelize.INTEGER
 }, {
     timestamps: false, // Para cuestiones de fecha y evitar errorer, es configuración de Sequelize
     tableName: 'USUARIO'

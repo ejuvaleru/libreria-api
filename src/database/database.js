@@ -3,8 +3,8 @@ const Sequelize = require('sequelize').Sequelize;
 export const sequelize = new Sequelize(
     'libreria',
     'root',
-    'Luis3006*',
-    // '', // Rodrigo
+    //'Luis3006*',
+    '', // Rodrigo
     {
         host: 'localhost',
         dialect: 'mysql',

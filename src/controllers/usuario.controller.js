@@ -21,6 +21,8 @@ export async function iniciarSesion(req, res) {
                 data: null
             });
         } else {
+            console.log(user.contraseña_claro);
+            console.log(contraseña);
             bcrypt.compare(contraseña, user.contraseña_claro, (err, same) => {
                 console.log('Es la misma password? ', same);
                 if (same) {
@@ -49,7 +51,7 @@ export async function iniciarSesion(req, res) {
 // Crear un usuario 
 export async function createUser(req, res) {
     try {
-        const { ID_usuario, nombre, nombre_usuario, contraseña_claro, ROL_id } = req.body;
+        const { ID_usuario, nombre, nombre_usuario, contraseña_claro, ROL_ID_rol } = req.body;
         console.log('pass: ', contraseña_claro);
         bcrypt.hash(contraseña_claro, 10, async (err, encrypted) => {
             console.log('HASH ', encrypted);
@@ -63,11 +65,11 @@ export async function createUser(req, res) {
                     nombre,
                     nombre_usuario,
                     contraseña_claro: encrypted,
-                    ROL_id
+                    ROL_ID_rol
                 });
 
                 if (nuevoUsuario) {
-                    return res.json({
+                    return res.json({ 
                         message: 'Usuario creado correctamente.',
                         data: nuevoUsuario
                     });
