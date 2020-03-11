@@ -1,5 +1,7 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../database/database'; // Cadena de conexión
+import Menu from '../models/menu.model';
+import Venta from '../models/venta.model';
 
 const VentaMenu = sequelize.define('venta_has_menu', {
     cantidad: {
@@ -12,5 +14,8 @@ const VentaMenu = sequelize.define('venta_has_menu', {
     tableName: 'VENTA_MENU'
 }
 );
+
+Menu.belongsToMany(Venta, {through: VentaMenu, foreignKey: 'MENU_ID_menu', otherKey: 'VENTA_ID_venta'});
+Venta.belongsToMany(Menu, {through: VentaMenu, foreignKey: 'VENTA_ID_venta', otherKey: 'MENU_ID_menu'});
 
 export default VentaMenu;

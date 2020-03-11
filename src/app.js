@@ -17,6 +17,7 @@ import subtemaRoutes from './routes/subtemas';
 import temaRoutes from './routes/temas';
 import rolRoutes from './routes/rol';
 import usuarioRoutes from './routes/usuario';
+import menuRoutes from './routes/menus'
 
 const app = express();
 
@@ -45,5 +46,7 @@ app.use('/api/nomenclaturas', nomenclaturaRoutes);
 
 app.use('/api/roles', rolRoutes);
 app.use('/api/usuarios', usuarioRoutes);
+
+app.use('/api/menus', menuRoutes);  
 
 export default app;

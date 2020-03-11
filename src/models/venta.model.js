@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../database/database'; // Cadena de conexión
+import Usuario from '../models/usuario.model';
 
 const Venta = sequelize.define('ventas', {
     ID_venta: {
@@ -16,5 +17,7 @@ const Venta = sequelize.define('ventas', {
     tableName: 'VENTA'
 }
 );
+Venta.belongsTo(Usuario, {foreignKey: 'USUSARIO_ID_usuario', as: 'venta'});
+Usuario.hasMany(Venta, {foreignKey: 'USUARIO_ID_usuario', as: 'venta'});
 
 export default Venta;
