@@ -17,7 +17,7 @@ const Venta = sequelize.define('ventas', {
     tableName: 'VENTA'
 }
 );
-Venta.belongsTo(Usuario, {foreignKey: 'USUSARIO_ID_usuario', as: 'venta'});
+Venta.belongsTo(Usuario, {foreignKey: 'USUARIO_ID_usuario', as: 'venta'});
 Usuario.hasMany(Venta, {foreignKey: 'USUARIO_ID_usuario', as: 'venta'});
 
 export default Venta;

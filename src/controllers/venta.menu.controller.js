@@ -21,7 +21,7 @@ export async function insertVentaMenu(req, res) {
     try {
         const { VENTA_ID_venta, MENU_ID_menu, cantidad } = req.body;
 
-        const nuevoVentaMenu = await Menu.create({
+        const nuevoVentaMenu = await VentaMenu.create({
             VENTA_ID_venta, 
             MENU_ID_menu,
             cantidad

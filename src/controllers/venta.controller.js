@@ -47,12 +47,12 @@ export async function getVentaById(req, res) {
     try {
         const { idVenta } = req.params; // Extraemos de los parametros la URL
 
-        let venta = await Venta.findOne({ // Creamos el objeto ejemplar a partir de lo que encuentre
+        let ventas = await Venta.findOne({ // Creamos el objeto ejemplar a partir de lo que encuentre
             where: {
                 ID_venta: idVenta // Buscamos por ID del ejemplar
             },
         });
-        if (!venta) { // Si no encuentra nada regresa un mensaje de error
+        if (!ventas) { // Si no encuentra nada regresa un mensaje de error
             return res.json({
                 code: 404,
                 message: `Ninguna editorial encontrada con el ID ${idVenta}`,
@@ -62,7 +62,7 @@ export async function getVentaById(req, res) {
             return res.json({
                 code: 200,
                 message: 'Venta encontrada.',
-                data: venta
+                data: ventas
             }); // Si encuentra algo refresa el objeto
         }
 
@@ -71,18 +71,18 @@ export async function getVentaById(req, res) {
     }
 }
 
-//// Seleccionar el editorial con ID mayor
-//export async function getMaxEditoriales(req, res) {
-//    try {
-//        const editoriales = await Editorial.findAll({
-//            attributes: [[Sequelize.fn('max', Sequelize.col('ID_editorial')), 'maxIDeditorial']],
-//        });
-//        res.json({
-//            data: editoriales,
-//        });
-//    } catch (e) {
-//        console.log(e);
-//    }
-//}
+// Seleccionar el editorial con ID mayor
+export async function getMaxVentas(req, res) {
+    try {
+        const ventas = await Venta.findAll({
+            attributes: [[Sequelize.fn('max', Sequelize.col('ID_venta')), 'maxIDventa']],
+        });
+        res.json({
+            data: ventas,
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
 
 
