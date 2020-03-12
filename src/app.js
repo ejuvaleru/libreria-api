@@ -17,7 +17,11 @@ import subtemaRoutes from './routes/subtemas';
 import temaRoutes from './routes/temas';
 import rolRoutes from './routes/rol';
 import usuarioRoutes from './routes/usuario';
+
 import menuRoutes from './routes/menus'
+import ventaRoutes from './routes/ventas'
+import ventaMenuRoutes from './routes/ventasMenus'
+import ventaEjemplarRoutes from './routes/ventasEjemplares'
 
 const app = express();
 
@@ -48,5 +52,9 @@ app.use('/api/roles', rolRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 
 app.use('/api/menus', menuRoutes);  
+app.use('/api/ventas', ventaRoutes);  
+app.use('/api/ventasMenus', ventaMenuRoutes);  
+app.use('/api/ventasEjemplares', ventaEjemplarRoutes);  
+
 
 export default app;
